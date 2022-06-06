@@ -30,6 +30,11 @@ class RoleSeeder extends Seeder {
         	9 => ['name' => 'acl-create', 'slug' => 'acl-create'],
         	10 => ['name' => 'acl-update', 'slug' => 'acl-update'],
         	11 => ['name' => 'acl-delete', 'slug' => 'acl-delete'],
+
+            12 => ['name' => 'customer-view', 'slug' => 'customer-view'],
+            13 => ['name' => 'customer-create', 'slug' => 'customer-create'],
+            14 => ['name' => 'customer-update', 'slug' => 'customer-update'],
+            15 => ['name' => 'customer-delete', 'slug' => 'customer-delete'],
         ];
 
         foreach ($permissions as $key => $item) {

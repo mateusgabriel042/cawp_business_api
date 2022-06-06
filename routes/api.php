@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\RoleController;
 use App\Http\Controllers\Admin\PermissionController;
+use App\Http\Controllers\Admin\CustomerController;
 
 Route::group(['prefix' => 'auth'], function(){
 	Route::post('/register', [AuthController::class, 'register']);
@@ -50,6 +51,16 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 		Route::delete('/{id}', [UserController::class, 'destroy']);
 		Route::delete('/remove-role/{idUser}/{idRole}', [UserController::class, 'removeRole']);
 		Route::delete('/remove-permission/{idUser}/{idPermission}', [UserController::class, 'removePermission']);
+	});
+
+	Route::group(['prefix' => 'customer'], function(){
+		Route::get('/', [CustomerController::class, 'index']);
+		Route::get('/all', [CustomerController::class, 'all']);
+		Route::get('/search/{column}/{value}', [CustomerController::class, 'search']);
+		Route::post('/', [CustomerController::class, 'store']);
+		Route::put('/{id}', [CustomerController::class, 'update']);
+		Route::get('/{id}', [CustomerController::class, 'show']);
+		Route::delete('/{id}', [CustomerController::class, 'destroy']);
 	});
 
 });
