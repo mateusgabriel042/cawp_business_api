@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->string('name', 200);
             $table->string('product_supplier', 200);//fornecedor do produto
             $table->integer('count');
@@ -29,6 +29,8 @@ return new class extends Migration
             $table->string('obs', 200)->nullable();
             $table->uuid('type_product_id');
             $table->foreign('type_product_id')->references('id')->on('types_product')->onDelete('cascade');
+            $table->uuid('store_id');
+            $table->foreign('store_id')->references('id')->on('stores')->onDelete('cascade');
             $table->timestamps();
             $table->softDeletes();
         });

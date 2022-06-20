@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('customers', function (Blueprint $table) {
-            $table->uuid('id');
+            $table->uuid('id')->primary();
             $table->string('cell_phone', 30);
             $table->string('cpf', 14)->nullable();
             $table->enum('sex', ['M', 'F']);
