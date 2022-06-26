@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use Laravel\Sanctum\Sanctum;
+use App\Models\Sanctum\PersonalAccessToken;
+use App\Util\TenantConnector;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -23,6 +26,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        TenantConnector::connect();
+        Sanctum::usePersonalAccessTokenModel(PersonalAccessToken::class);
     }
 }

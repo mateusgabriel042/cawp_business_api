@@ -11,6 +11,8 @@ class Customer extends Model
 {
     use HasFactory, Uuid;
 
+    protected $connection = 'tenant';
+    
     protected $table = 'customers';
 
     public $incrementing = false;

@@ -72,7 +72,7 @@ class RoleService {
 
     public function removePermission($idRole, $idPermission){
         $this->checkAccess('acl-delete');
-        DB::table('roles_permissions')
+        DB::connection('tenant')->table('roles_permissions')
           ->where('role_id', $idRole)
           ->where('permission_id', $idPermission)
           ->delete();

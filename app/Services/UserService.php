@@ -116,7 +116,7 @@ class UserService {
 
     public function removeRole($idUser, $idRole){
         $this->checkAccess('user-update');
-        DB::table('users_roles')
+        DB::connection('tenant')->table('users_roles')
           ->where('user_id', $idUser)
           ->where('role_id', $idRole)
           ->delete();
@@ -126,7 +126,7 @@ class UserService {
 
     public function removePermission($idUser, $idPermission){
         $this->checkAccess('user-update');
-        DB::table('users_permissions')
+        DB::connection('tenant')->table('users_permissions')
           ->where('user_id', $idUser)
           ->where('permission_id', $idPermission)
           ->delete();

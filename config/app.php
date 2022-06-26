@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Facade;
 
 return [
-
+    'domain' => env('APP_DOMAIN'),
     /*
     |--------------------------------------------------------------------------
     | Application Name

@@ -4,15 +4,14 @@ namespace App\Models;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Role;
 
-class Permission extends Model
+class LogWebhook extends Model
 {
     use HasFactory, Uuid;
 
     protected $connection = 'tenant';
-
-    protected $table = 'permissions';
+    
+    protected $table = 'logs_webhook';
     
     public $incrementing = false;
 
@@ -20,11 +19,6 @@ class Permission extends Model
 
     protected $fillable = [
         'id',
-        'name',
-        'slug',
+        'value',
     ];
-
-    public function roles(){
-    	return $this->belongsToMany(Role::class, 'roles_permissions');
-    }
 }

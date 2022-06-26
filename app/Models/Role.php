@@ -10,6 +10,8 @@ class Role extends Model
 {
     use HasFactory, Uuid;
 
+    protected $connection = 'tenant';
+
     protected $table = 'roles';
 
     public $incrementing = false;
