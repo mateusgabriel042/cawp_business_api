@@ -53,16 +53,6 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 		Route::delete('/remove-permission/{idUser}/{idPermission}', [UserController::class, 'removePermission']);
 	});
 
-	Route::group(['prefix' => 'customer'], function(){
-		Route::get('/', [CustomerController::class, 'index']);
-		Route::get('/all', [CustomerController::class, 'all']);
-		Route::get('/search/{column}/{value}', [CustomerController::class, 'search']);
-		Route::post('/', [CustomerController::class, 'store']);
-		Route::put('/{id}', [CustomerController::class, 'update']);
-		Route::get('/{id}', [CustomerController::class, 'show']);
-		Route::delete('/{id}', [CustomerController::class, 'destroy']);
-	});
-
 });
 
 

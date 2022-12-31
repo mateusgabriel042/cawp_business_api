@@ -19,7 +19,7 @@ class TenantConnector {
             
         }
         DB::purge('tenant');
-        $config = Config::get('database.connections.main_cawptech_business');
+        $config = Config::get('database.connections.main_admin_city');
         $config['host'] = $tenant->host;
         $config['port'] = $tenant->port;
         $config['database'] = $tenant->database_name;
