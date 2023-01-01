@@ -13,7 +13,7 @@ class CreateRolesPermissionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('roles_permissions', function (Blueprint $table) {
+        Schema::connection('cawptech_main')->create('roles_permissions', function (Blueprint $table) {
             $table->uuid('role_id');
             $table->uuid('permission_id');
             

@@ -7,7 +7,6 @@ use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Schema;
 use App\Models\Permission;
 use App\Models\User;
-use App\Util\TenantConnector;
 
 class AuthServiceProvider extends ServiceProvider
 {
@@ -29,22 +28,20 @@ class AuthServiceProvider extends ServiceProvider
     {
         $this->registerPolicies();
 
-        if(TenantConnector::connect()){
-            if(Schema::connection('tenant')->hasTable('permissions')){
-                $permissions = Permission::with('roles')->get();
+        if(Schema::connection('cawptech_main')->hasTable('permissions')){
+            $permissions = Permission::with('roles')->get();
 
-                foreach ($permissions as $permission) {
+            foreach ($permissions as $permission) {
 
-                    Gate::define($permission->name, function(User $user) use ($permission){
-                        return $user->hasPermission($permission);
-                    });
-                }
-
-                Gate::before(function(User $user, $ability){
-                    if($user->hasAnyRoles('admin'))
-                        return true;
+                Gate::define($permission->name, function(User $user) use ($permission){
+                    return $user->hasPermission($permission);
                 });
             }
+
+            Gate::before(function(User $user, $ability){
+                if($user->hasAnyRoles('admin'))
+                    return true;
+            });
         }
     }
 }

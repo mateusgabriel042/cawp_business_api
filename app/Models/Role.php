@@ -10,7 +10,7 @@ class Role extends Model
 {
     use HasFactory, Uuid;
 
-    protected $connection = 'tenant';
+    protected $connection = 'cawptech_main';
 
     protected $table = 'roles';
 

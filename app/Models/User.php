@@ -16,7 +16,7 @@ class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable, HasRolesAndPermissions, Uuid;
 
-    protected $connection = 'tenant';
+    protected $connection = 'cawptech_main';
 
     public $incrementing = false;
 
