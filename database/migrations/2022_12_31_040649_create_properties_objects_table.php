@@ -15,18 +15,19 @@ return new class extends Migration
     {
         Schema::connection('cawptech_properties')->create('objects', function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('title', 255);
             $table->string('street', 255);
             $table->string('number', 6)->nullable();
             $table->string('neighborhood', 255);
             $table->text('complement')->nullable();
-            $table->string('zipcode', 14);
+            $table->string('zipcode', 9);
             $table->integer('city_id');
             $table->string('city', 150);
             $table->integer('state_id');
             $table->string('state', 150);
             $table->bigInteger('daily_price');
-            $table->integer('installments_max');//prestações maxima
-            $table->mediumText('link_google_maps');
+            $table->integer('installments_max')->default(1);//prestações maxima
+            $table->mediumText('link_google_maps')->nullable();
             $table->string('brand', 150);
             $table->string('object', 250);
             $table->string('check_in', 5);

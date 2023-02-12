@@ -35,6 +35,26 @@ class RoleSeeder extends Seeder {
             13 => ['name' => 'customer-create', 'slug' => 'customer-create'],
             14 => ['name' => 'customer-update', 'slug' => 'customer-update'],
             15 => ['name' => 'customer-delete', 'slug' => 'customer-delete'],
+
+            16 => ['name' => 'properties-house-view', 'slug' => 'properties-house-view'],
+            17 => ['name' => 'properties-house-create', 'slug' => 'properties-house-create'],
+            18 => ['name' => 'properties-house-update', 'slug' => 'properties-house-update'],
+            19 => ['name' => 'properties-house-delete', 'slug' => 'properties-house-delete'],
+
+            20 => ['name' => 'properties-hotel-view', 'slug' => 'properties-hotel-view'],
+            21 => ['name' => 'properties-hotel-create', 'slug' => 'properties-hotel-create'],
+            22 => ['name' => 'properties-hotel-update', 'slug' => 'properties-hotel-update'],
+            23 => ['name' => 'properties-hotel-delete', 'slug' => 'properties-hotel-delete'],
+
+            24 => ['name' => 'properties-object-view', 'slug' => 'properties-object-view'],
+            25 => ['name' => 'properties-object-create', 'slug' => 'properties-object-create'],
+            26 => ['name' => 'properties-object-update', 'slug' => 'properties-object-update'],
+            27 => ['name' => 'properties-object-delete', 'slug' => 'properties-object-delete'],
+
+            28 => ['name' => 'properties-vehicle-view', 'slug' => 'properties-vehicle-view'],
+            29 => ['name' => 'properties-vehicle-create', 'slug' => 'properties-vehicle-create'],
+            30 => ['name' => 'properties-vehicle-update', 'slug' => 'properties-vehicle-update'],
+            31 => ['name' => 'properties-vehicle-delete', 'slug' => 'properties-vehicle-delete'],
         ];
 
         foreach ($permissions as $key => $item) {

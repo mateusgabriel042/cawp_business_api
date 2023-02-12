@@ -15,30 +15,31 @@ return new class extends Migration
     {
         Schema::connection('cawptech_properties')->create('hotels', function (Blueprint $table) {
             $table->uuid('id');
+            $table->string('title', 255);
             $table->string('street', 255);
             $table->string('number', 6)->nullable();
             $table->string('neighborhood', 255);
             $table->text('complement')->nullable();
-            $table->string('zipcode', 14);
+            $table->string('zipcode', 9);
             $table->integer('city_id');
             $table->string('city', 150);
             $table->integer('state_id');
             $table->string('state', 150);
             $table->bigInteger('daily_price');
-            $table->integer('installments_max');//prestações maxima
-            $table->mediumText('link_google_maps');
-            $table->integer('quantity_pool');//piscina
-            $table->integer('quantity_playground');//playground
-            $table->integer('quantity_bedroom');//quartos
-            $table->integer('quantity_single_beds');//camas de solteiro
-            $table->integer('quantity_couple_beds');//camas de casal
-            $table->integer('quantity_bathrooms');//banheiros
-            $table->integer('quantity_suites');//suites
-            $table->integer('quantity_garage');
-            $table->boolean('contain_laundry');//lavanderia
-            $table->boolean('contain_view_from_sea');//vista pro mar
-            $table->boolean('contain_backyard');//quintal
-            $table->boolean('contain_air_conditioner');//arcondicionado
+            $table->integer('installments_max')->default(1);//prestações maxima
+            $table->mediumText('link_google_maps')->nullable();
+            $table->integer('quantity_pool')->default(0);//piscina
+            $table->integer('quantity_playground')->default(0);//playground
+            $table->integer('quantity_bedroom')->default(0);//quartos
+            $table->integer('quantity_single_beds')->default(0);//camas de solteiro
+            $table->integer('quantity_couple_beds')->default(0);//camas de casal
+            $table->integer('quantity_bathrooms')->default(0);//banheiros
+            $table->integer('quantity_suites')->default(0);//suites
+            $table->integer('quantity_garage')->default(0);
+            $table->boolean('contain_laundry')->default(0);//lavanderia
+            $table->boolean('contain_view_from_sea')->default(0);//vista pro mar
+            $table->boolean('contain_backyard')->default(0);//quintal
+            $table->boolean('contain_air_conditioner')->default(0);//arcondicionado
             $table->string('check_in', 5);
             $table->string('check_out', 5);
             $table->string('phone_number', 24)->nullable();
