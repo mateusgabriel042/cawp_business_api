@@ -36,7 +36,7 @@ class VehicleUpdateRequest extends FormRequest
             'state' => 'required|string|max:150',
             'daily_price' => 'required|min:0',
             'brand' => 'required|string|min:2|max:150',
-            'year_veicle' => 'required|min:1950',
+            'year_veicle' => 'required',
             'type_veicle' => 'required|string|max:150',
             'check_in' => 'required|string|min:5|max:5',
             'check_out' => 'required|string|min:5|max:5',

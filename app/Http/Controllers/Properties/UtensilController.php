@@ -5,20 +5,20 @@ namespace App\Http\Controllers\Properties;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Traits\ApiResponser;
-use App\Services\Properties\ObjectService as EndpointService;
-use App\Http\Requests\Properties\ObjectRegisterRequest as EndpointRegisterRequest;
-use App\Http\Requests\Properties\ObjectUpdateRequest as EndpointUpdateRequest;
-use App\Http\Resources\Properties\ObjectCollection as EndpointCollection;
-use App\Http\Resources\Properties\ObjectResource as EndpointResource;
-use App\Models\Properties\Object as EndpointModel;
+use App\Services\Properties\UtensilService as EndpointService;
+use App\Http\Requests\Properties\UtensilRegisterRequest as EndpointRegisterRequest;
+use App\Http\Requests\Properties\UtensilUpdateRequest as EndpointUpdateRequest;
+use App\Http\Resources\Properties\UtensilCollection as EndpointCollection;
+use App\Http\Resources\Properties\UtensilResource as EndpointResource;
+use App\Models\Properties\Utensil as EndpointModel;
 
-class ObjectController extends Controller
+class UtensilController extends Controller
 {
     use ApiResponser;
 
     private $endpointService;
-    private $role = 'properties-object';
-    private $lbMessageStatus = 'objeto(s)';
+    private $role = 'properties-utensil';
+    private $lbMessageStatus = 'utencilio(s)';
     private $relations = [];
 
     public function __construct(){
@@ -38,9 +38,35 @@ class ObjectController extends Controller
         ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
     }
 
+    public function listPublilc(Request $request) {
+        try {
+            $endpointItems = $this->endpointService->listPublic($this->relations, $request);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItems' => new EndpointCollection($endpointItems),
+            'pagination' => ['pages' => $endpointItems->lastPage()],
+        ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
+    }
+
     public function search($option, $value) {
         try {
             $endpointItems = $this->endpointService->search($option, $value, $this->relations);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItems' => new EndpointCollection($endpointItems),
+            'pagination' => ['pages' => $endpointItems->lastPage()],
+        ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
+    }
+
+    public function searchPublic($option, $value) {
+        try {
+            $endpointItems = $this->endpointService->searchPublic($option, $value, $this->relations);
         } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }
@@ -69,6 +95,18 @@ class ObjectController extends Controller
     public function show($id) {
         try{
             $endpointItem = $this->endpointService->find($id, $this->relations);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItem' => new EndpointResource($endpointItem),
+        ],  $this->lbMessageStatus.' selecionada(o) com sucesso!');
+    }
+
+    public function showPublic($id) {
+        try{
+            $endpointItem = $this->endpointService->findPublic($id, $this->relations);
         } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }

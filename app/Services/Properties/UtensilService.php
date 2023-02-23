@@ -4,7 +4,7 @@ namespace App\Services\Properties;
 
 use App\Services\AbstractService;
 
-class VehicleService extends AbstractService {
+class UtensilService extends AbstractService {
     private $role;
     private $model;
 

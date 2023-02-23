@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::connection('cawptech_properties')->create('objects', function (Blueprint $table) {
+        Schema::connection('cawptech_properties')->create('utensils', function (Blueprint $table) {
             $table->uuid('id');
             $table->string('title', 255);
             $table->string('street', 255);
@@ -49,6 +49,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('objects');
+        Schema::connection('cawptech_properties')->dropIfExists('objects');
     }
 };

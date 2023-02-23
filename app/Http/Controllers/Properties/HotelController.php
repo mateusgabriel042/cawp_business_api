@@ -38,9 +38,35 @@ class HotelController extends Controller
         ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
     }
 
+    public function listPublilc(Request $request) {
+        try {
+            $endpointItems = $this->endpointService->listPublic($this->relations, $request);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItems' => new EndpointCollection($endpointItems),
+            'pagination' => ['pages' => $endpointItems->lastPage()],
+        ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
+    }
+
     public function search($option, $value) {
         try {
             $endpointItems = $this->endpointService->search($option, $value, $this->relations);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItems' => new EndpointCollection($endpointItems),
+            'pagination' => ['pages' => $endpointItems->lastPage()],
+        ],  'Listagem de '.$this->lbMessageStatus.' realizada com sucesso!');
+    }
+
+    public function searchPublic($option, $value) {
+        try {
+            $endpointItems = $this->endpointService->searchPublic($option, $value, $this->relations);
         } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }
@@ -69,6 +95,18 @@ class HotelController extends Controller
     public function show($id) {
         try{
             $endpointItem = $this->endpointService->find($id, $this->relations);
+        } catch (\Exception $e) {
+            return $this->error($e->getMessage(), $e->getCode());
+        }
+
+        return $this->success([
+            'endpointItem' => new EndpointResource($endpointItem),
+        ],  $this->lbMessageStatus.' selecionada(o) com sucesso!');
+    }
+
+    public function showPublic($id) {
+        try{
+            $endpointItem = $this->endpointService->findPublic($id, $this->relations);
         } catch (\Exception $e) {
             return $this->error($e->getMessage(), $e->getCode());
         }

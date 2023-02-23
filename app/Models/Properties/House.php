@@ -35,6 +35,7 @@ class House extends Model
 		'condominium_price',
 		'condominium_price_include',
 		'condominium_iptu_include',
+		'area',
 		'type_residence',
 		'type_payment',
 		'installments_max',

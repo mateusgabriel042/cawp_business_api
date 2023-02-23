@@ -46,10 +46,10 @@ class RoleSeeder extends Seeder {
             22 => ['name' => 'properties-hotel-update', 'slug' => 'properties-hotel-update'],
             23 => ['name' => 'properties-hotel-delete', 'slug' => 'properties-hotel-delete'],
 
-            24 => ['name' => 'properties-object-view', 'slug' => 'properties-object-view'],
-            25 => ['name' => 'properties-object-create', 'slug' => 'properties-object-create'],
-            26 => ['name' => 'properties-object-update', 'slug' => 'properties-object-update'],
-            27 => ['name' => 'properties-object-delete', 'slug' => 'properties-object-delete'],
+            24 => ['name' => 'properties-utensil-view', 'slug' => 'properties-utensil-view'],
+            25 => ['name' => 'properties-utensil-create', 'slug' => 'properties-utensil-create'],
+            26 => ['name' => 'properties-utensil-update', 'slug' => 'properties-utensil-update'],
+            27 => ['name' => 'properties-utensil-delete', 'slug' => 'properties-utensil-delete'],
 
             28 => ['name' => 'properties-vehicle-view', 'slug' => 'properties-vehicle-view'],
             29 => ['name' => 'properties-vehicle-create', 'slug' => 'properties-vehicle-create'],

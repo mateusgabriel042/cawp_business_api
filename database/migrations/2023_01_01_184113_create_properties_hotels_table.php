@@ -60,6 +60,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('hotels');
+        Schema::connection('cawptech_properties')->dropIfExists('hotels');
     }
 };

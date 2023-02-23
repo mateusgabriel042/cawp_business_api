@@ -6,13 +6,13 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\Uuid;
 
-class Object extends Model
+class Utensil extends Model
 {
     use HasFactory, Uuid;
 
     protected $connection = 'cawptech_properties';
 
-    protected $table = 'objects';
+    protected $table = 'utensils';
 
     public $incrementing = false;
 

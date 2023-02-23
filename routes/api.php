@@ -10,7 +10,7 @@ use App\Http\Controllers\Admin\PermissionController;
 
 use App\Http\Controllers\Properties\HotelController;
 use App\Http\Controllers\Properties\HouseController;
-use App\Http\Controllers\Properties\ObjectlController;
+use App\Http\Controllers\Properties\UtensilController;
 use App\Http\Controllers\Properties\VehicleController;
 
 
@@ -18,6 +18,35 @@ Route::group(['prefix' => 'auth'], function(){
 	Route::post('/register', [AuthController::class, 'register']);
 	Route::post('/login', [AuthController::class, 'login']);
 });
+
+Route::group(['prefix' => 'public'], function(){
+	Route::group(['prefix' => 'properties'], function(){
+		Route::group(['prefix' => 'hotel'], function(){
+			Route::get('/', [HotelController::class, 'listPublilc']);
+			Route::get('/search/{column}/{value}', [HotelController::class, 'searchPublilc']);
+			Route::get('/{id}', [HotelController::class, 'showPublilc']);
+		});
+		
+		Route::group(['prefix' => 'house'], function(){
+			Route::get('/', [HouseController::class, 'listPublilc']);
+			Route::get('/search/{column}/{value}', [HouseController::class, 'searchPublilc']);
+			Route::get('/{id}', [HouseController::class, 'showPublilc']);
+		});
+
+		Route::group(['prefix' => 'utensil'], function(){
+			Route::get('/', [UtensilController::class, 'listPublilc']);
+			Route::get('/search/{column}/{value}', [UtensilController::class, 'searchPublilc']);
+			Route::get('/{id}', [UtensilController::class, 'showPublilc']);
+		});
+
+		Route::group(['prefix' => 'vehicle'], function(){
+			Route::get('/', [VehicleController::class, 'listPublilc']);
+			Route::get('/search/{column}/{value}', [VehicleController::class, 'searchPublilc']);
+			Route::get('/{id}', [VehicleController::class, 'showPublilc']);
+		});
+	});
+});
+
 
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::group(['prefix' => 'auth'], function(){
@@ -77,13 +106,13 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
 			Route::delete('/{id}', [HouseController::class, 'destroy']);
 		});
 
-		Route::group(['prefix' => 'object'], function(){
-			Route::get('/', [ObjectlController::class, 'index']);
-			Route::post('/', [ObjectlController::class, 'store']);
-			Route::get('/search/{column}/{value}', [ObjectlController::class, 'search']);
-			Route::put('/{id}', [ObjectlController::class, 'update']);
-			Route::get('/{id}', [ObjectlController::class, 'show']);
-			Route::delete('/{id}', [ObjectlController::class, 'destroy']);
+		Route::group(['prefix' => 'utensil'], function(){
+			Route::get('/', [UtensilController::class, 'index']);
+			Route::post('/', [UtensilController::class, 'store']);
+			Route::get('/search/{column}/{value}', [UtensilController::class, 'search']);
+			Route::put('/{id}', [UtensilController::class, 'update']);
+			Route::get('/{id}', [UtensilController::class, 'show']);
+			Route::delete('/{id}', [UtensilController::class, 'destroy']);
 		});
 
 		Route::group(['prefix' => 'vehicle'], function(){

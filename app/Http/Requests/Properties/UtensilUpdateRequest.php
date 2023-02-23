@@ -5,7 +5,7 @@ namespace App\Http\Requests\Properties;
 use Illuminate\Foundation\Http\FormRequest;
 use \Illuminate\Contracts\Validation\Validator;
 
-class ObjectRegisterRequest extends FormRequest
+class UtensilUpdateRequest extends FormRequest
 {
      public $validator = null;
     /**

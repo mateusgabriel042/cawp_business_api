@@ -37,6 +37,7 @@ class HouseUpdateRequest extends FormRequest
             'price' => 'required|min:0',
             'iptu_price' => 'required|min:0',
             'condominium_price' => 'required|min:0',
+            'area' => 'required',
             'type_residence' => 'required|string',
             'type_payment' => 'required|string',
             'cellphone_number' => 'required|string|min:11|max:24',

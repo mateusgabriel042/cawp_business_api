@@ -31,7 +31,8 @@ return new class extends Migration
             $table->bigInteger('condominium_price');
             $table->boolean('condominium_price_include')->default(0);
             $table->boolean('condominium_iptu_include')->default(0);
-            $table->enum('type_residence', ['condominio', 'vila', 'casa', 'chacara', 'quarto', 'kitnet']); // sale = venda; rent = aluguel
+            $table->integer('area');
+            $table->enum('type_residence', ['condominio', 'vila', 'casa', 'chacara', 'quarto', 'kitnet', 'terreno']); // sale = venda; rent = aluguel
             $table->enum('type_payment', ['venda', 'aluguel']); // sale = venda; rent = aluguel
             $table->mediumText('link_google_maps')->nullable();
             $table->integer('quantity_pool')->default(0);//piscina
@@ -61,6 +62,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('houses');
+        Schema::connection('cawptech_properties')->dropIfExists('houses');
     }
 };

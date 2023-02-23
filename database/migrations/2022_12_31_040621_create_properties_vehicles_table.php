@@ -50,6 +50,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('vehicles');
+        Schema::connection('cawptech_properties')->dropIfExists('vehicles');
     }
 };
