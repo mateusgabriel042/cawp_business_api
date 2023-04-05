@@ -20,6 +20,7 @@ class HotelService extends AbstractService {
         foreach($dataFilter as $key => $item){
             if($item != null){
                 $operation = $this->verifyOperation($key);
+                $item = $operation == 'LIKE' ? "%{$item}%" : $item;
                 $key = str_replace(['max_', 'min_'],'', $key);
                 $result = $result->where($key, $operation, $item);
             }
@@ -38,19 +39,18 @@ class HotelService extends AbstractService {
 
     public function verifyOperation($key){
         $operation = '';
-        if($key == 'type_residence') $operation = '=';
         if($key == 'city') $operation = '=';
         if($key == 'state') $operation = '=';
-        if($key == 'min_price') $operation = '>=';
-        if($key == 'max_price') $operation = '<=';
-        if($key == 'min_area') $operation = '>=';
-        if($key == 'max_area') $operation = '<=';
-        if($key == 'type_residence') $operation = '=';
-        if($key == 'type_payment') $operation = '=';
+        if($key == 'min_daily_price') $operation = '>=';
+        if($key == 'max_daily_price') $operation = '<=';
         if($key == 'min_quantity_pool') $operation = '>=';
         if($key == 'max_quantity_pool') $operation = '<=';
-        if($key == 'min_quantity_bedroom') $operation = '>=';
-        if($key == 'max_quantity_bedroom') $operation = '<=';
+        if($key == 'min_quantity_playground') $operation = '>=';
+        if($key == 'max_quantity_playground') $operation = '<=';
+        if($key == 'min_quantity_single_beds') $operation = '>=';
+        if($key == 'max_quantity_single_beds') $operation = '<=';
+        if($key == 'min_quantity_couple_beds') $operation = '>=';
+        if($key == 'max_quantity_couple_beds') $operation = '<=';
         if($key == 'min_quantity_bathrooms') $operation = '>=';
         if($key == 'max_quantity_bathrooms') $operation = '<=';
         if($key == 'min_quantity_suites') $operation = '>=';
@@ -58,7 +58,6 @@ class HotelService extends AbstractService {
         if($key == 'min_quantity_garage') $operation = '>=';
         if($key == 'max_quantity_garage') $operation = '<=';
         if($key == 'contain_view_from_sea') $operation = '=';
-        if($key == 'contain_furnished') $operation = '=';
         if($key == 'contain_laundry') $operation = '=';
         if($key == 'contain_backyard') $operation = '=';
         if($key == 'contain_air_conditioner') $operation = '=';

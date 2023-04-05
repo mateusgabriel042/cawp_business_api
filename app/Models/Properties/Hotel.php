@@ -35,7 +35,6 @@ class Hotel extends Model
 		'link_google_maps',
 		'quantity_pool',
 		'quantity_playground',
-		'quantity_bedroom',
 		'quantity_single_beds',
 		'quantity_couple_beds',
 		'quantity_bathrooms',
@@ -53,5 +52,7 @@ class Hotel extends Model
 		'instagram',
 		'youtube',
 		'description',
+		'views',
+		'likes',
     ];
 }

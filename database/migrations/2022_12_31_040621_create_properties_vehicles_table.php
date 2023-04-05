@@ -38,6 +38,8 @@ return new class extends Migration
             $table->string('facebook', 250)->nullable();
             $table->string('instagram', 250)->nullable();
             $table->mediumText('description')->nullable();
+            $table->bigInteger('views')->default(0);
+            $table->bigInteger('likes')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

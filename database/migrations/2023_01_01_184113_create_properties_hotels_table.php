@@ -30,7 +30,6 @@ return new class extends Migration
             $table->mediumText('link_google_maps')->nullable();
             $table->integer('quantity_pool')->default(0);//piscina
             $table->integer('quantity_playground')->default(0);//playground
-            $table->integer('quantity_bedroom')->default(0);//quartos
             $table->integer('quantity_single_beds')->default(0);//camas de solteiro
             $table->integer('quantity_couple_beds')->default(0);//camas de casal
             $table->integer('quantity_bathrooms')->default(0);//banheiros
@@ -48,6 +47,8 @@ return new class extends Migration
             $table->string('instagram', 250)->nullable();
             $table->string('youtube', 250)->nullable();
             $table->mediumText('description')->nullable();
+            $table->bigInteger('views')->default(0);
+            $table->bigInteger('likes')->default(0);
             $table->softDeletes();
             $table->timestamps();
         });

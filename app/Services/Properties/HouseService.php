@@ -20,6 +20,7 @@ class HouseService extends AbstractService {
         foreach($dataFilter as $key => $item){
             if($item != null){
                 $operation = $this->verifyOperation($key);
+                $item = $operation == 'LIKE' ? "%{$item}%" : $item;
                 $key = str_replace(['max_', 'min_'],'', $key);
                 $result = $result->where($key, $operation, $item);
             }

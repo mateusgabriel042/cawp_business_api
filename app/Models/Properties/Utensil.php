@@ -42,6 +42,8 @@ class Utensil extends Model
 		'facebook',
 		'instagram',
 		'description',
+		'views',
+		'likes',
     ];
 
 }

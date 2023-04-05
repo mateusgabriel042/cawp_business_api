@@ -43,6 +43,8 @@ class Vehicle extends Model
 		'facebook',
 		'instagram',
 		'description',
+		'views',
+		'likes',
     ];
 
 }
